@@ -1,1 +1,22 @@
-
+name: Backend Test 
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+jobs:
+  tests:
+    runs-on: ubantu-22.04
+    defaults:
+      runs:
+        working-directory: backend
+    steps:
+    - name: setup
+      uses: action/checkout@v4
+    - name: Node name:setup
+      uses: action/checkout@v4
+      with:
+        node-version: 24.x
+    - name: install dependencies
+      run: npm ci
+    - name: Run All tests
+      run: npm test 
